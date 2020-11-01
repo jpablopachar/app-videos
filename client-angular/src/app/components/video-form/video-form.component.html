@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h3>Nuevo video</h3>
+        <form #videoForm="ngForm" (ngSubmit)="createVideo(videoForm)">
+          <div class="form-group">
+            <input type="text" name="title" [(ngModel)]="video.title"
+              placeholder="Escriba un titulo para el video" class="form-control" autoFocus/>
+          </div>
+          <div class="form-group">
+            <input type="text" name="url" [(ngModel)]="video.url"
+              placeholder="https://www.youtube.com" class="form-control" />
+          </div>
+          <div class="form-group">
+            <textarea name="description" [(ngModel)]="video.description" rows="3"
+              class="form-control" placeholder="Escriba una descripcion"></textarea>
+          </div>
+          <ng-container *ngIf="params.id else create">
+            <button class="btn btn-primary">Actualizar video</button>
+          </ng-container>
+          <ng-template #create>
+            <button class="btn btn-primary">Crear video</button>
+          </ng-template>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
